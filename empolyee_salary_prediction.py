@@ -211,10 +211,10 @@ native_country = st.sidebar.selectbox("Native Country",[
  
 # Build input DataFrame (⚠️ must match preprocessing of your training data)
 input_df = pd.DataFrame ({
-    'Age': [age],
+    'age': [age],
     'workclass' : [workclass],
     'education' : [education] ,
-    'education_num' : [education_num] ,
+    'educational_num' : [educational_num] ,
     'marital_status' : [marital_status] ,
     'occupation' : [occupation] ,
     'relationship' : [relationship] ,
