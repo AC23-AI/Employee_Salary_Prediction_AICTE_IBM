@@ -183,7 +183,7 @@ st.sidebar.header("👨‍💻 EMPLOYEE DETAILS")
 # ✨ Replace these fields with your dataset's actual input columns
 age = st.sidebar.slider("Age", 18, 65, 30)
 workclass = st.sidebar.selectbox("Work", [
-    "Private", "Self-emp-not-inc", "Local-gov", "State-gov",
+     "Self-emp-not-inc", "Local-gov", "State-gov",
      "Federal-gov", "Self-emp-inc"
 ])
 education = st.sidebar.selectbox("Education Level", [
