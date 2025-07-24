@@ -163,8 +163,6 @@ print(f"\n✅ Best model: {best_model_name} with accuracy {results[best_model_na
 joblib.dump(best_model, "best_model.pkl")
 print("✅ Saved best model as best_model.pkl")
 
-!pip install streamlit
-
 # Commented out IPython magic to ensure Python compatibility.
 # %%writefile app.py
 # import streamlit as st
@@ -248,5 +246,3 @@ print("✅ Saved best model as best_model.pkl")
 #     st.download_button("Download Predictions CSV", csv, file_name='predicted_classes.csv', mime='text/csv')
 # 
 #
-
-! streamlit run app.py
