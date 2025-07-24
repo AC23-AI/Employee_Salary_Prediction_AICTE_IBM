@@ -189,7 +189,7 @@ workclass = st.sidebar.selectbox("Work", [
 education = st.sidebar.selectbox("Education Level", [
     "Bachelors", "Masters", "PhD", "HS-grad", "Assoc", "Some-college"
 ])
-education_num = st.sidebar.slider("Years of Experience", 1, 16, 10)
+educational_num = st.sidebar.slider("Years of Experience", 1, 16, 10)
 marital_status = st.sidebar.selectbox("Marital Status", [
     "Married-civ-spouse", "Never-married", "Divorced", "Separated", "Widowed",
     "Married-spouse-absent"
