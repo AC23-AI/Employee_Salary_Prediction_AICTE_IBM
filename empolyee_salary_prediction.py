@@ -93,6 +93,17 @@ data['education'] = encoder.fit_transform(data['education'])
 data['native_country']=encoder.fit_transform(data['native_country'])
 
 data
+# List of categorical columns to encode
+categorical_cols = ['workclass', 'education', 'marital_status', 'occupation', 'relationship', 'native_country']
+
+# Dictionary to store encoders
+encoders = {}
+
+# Apply Label Encoding
+for col in categorical_cols:
+    le = LabelEncoder()
+    df[col] = le.fit_transform(df[col])
+    encoders[col] = le
 joblib.dump(encoders, "encoders.pkl")
 x=data.drop(columns=['income'])
 y=data['income']
