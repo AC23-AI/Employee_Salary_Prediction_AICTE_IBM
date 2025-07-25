@@ -208,14 +208,14 @@ hours_per_week = st.sidebar.slider("Hours per week", 1, 80, 40)
 # Build input DataFrame (⚠️ must match preprocessing of your training data)
 input_df = pd.DataFrame ({
     'age': [age],
-    'workclass' : [workclass],
-    'education' : [education] ,
+    #'workclass' : [workclass],
+    #'education' : [education] ,
     'educational_num' : [educational_num] ,
-    'marital_status' : [marital_status] ,
-    'occupation' : [occupation] ,
-    'relationship' : [relationship] ,
+    #'marital_status' : [marital_status] ,
+    #'occupation' : [occupation] ,
+    #'relationship' : [relationship] ,
     'hours_per_week' : [hours_per_week] ,
-    'native_country' : [native_country]
+    #'native_country' : [native_country]
 })
 # Apply label encoding using saved encoders
 for col in encoders:
