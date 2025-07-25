@@ -196,26 +196,26 @@ st.sidebar.header("👨‍💻 EMPLOYEE DETAILS")
  
 # ✨ Replace these fields with your dataset's actual input columns
 age = st.sidebar.slider("Age", 18, 65, 30)
-#workclass = st.selectbox("Workclass", encoders['workclass'].classes_.tolist())
-#education = st.selectbox("Education", encoders['education'].classes_.tolist())
+workclass = st.selectbox("Workclass", encoders['workclass'].classes_.tolist())
+education = st.selectbox("Education", encoders['education'].classes_.tolist())
 educational_num = st.sidebar.slider("Years of Experience", 1, 16, 10)
-#marital_status = st.selectbox("Marital Status", encoders['marital_status'].classes_.tolist())
-#occupation = st.selectbox("Occupation", encoders['occupation'].classes_.tolist())
-#relationship = st.selectbox("Relationship", encoders['relationship'].classes_.tolist())
+marital_status = st.selectbox("Marital Status", encoders['marital_status'].classes_.tolist())
+occupation = st.selectbox("Occupation", encoders['occupation'].classes_.tolist())
+relationship = st.selectbox("Relationship", encoders['relationship'].classes_.tolist())
 hours_per_week = st.sidebar.slider("Hours per week", 1, 80, 40)
-#native_country = st.selectbox("Native Country", encoders['native_country'].classes_.tolist())
+native_country = st.selectbox("Native Country", encoders['native_country'].classes_.tolist())
  
 # Build input DataFrame (⚠️ must match preprocessing of your training data)
 input_df = pd.DataFrame ({
     'age': [age],
-    #'workclass' : [workclass],
-    #'education' : [education] ,
+    'workclass' : [workclass],
+    'education' : [education] ,
     'educational_num' : [educational_num] ,
-    #'marital_status' : [marital_status] ,
-    #'occupation' : [occupation] ,
-    #'relationship' : [relationship] ,
+    'marital_status' : [marital_status] ,
+    'occupation' : [occupation] ,
+    'relationship' : [relationship] ,
     'hours_per_week' : [hours_per_week] ,
-    #'native_country' : [native_country]
+    'native_country' : [native_country]
 })
 # Apply label encoding using saved encoders
 for col in encoders:
