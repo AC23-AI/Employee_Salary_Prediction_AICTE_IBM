@@ -83,6 +83,7 @@ data
 """# **LABEL ENCODING**"""
 
 from sklearn.preprocessing import LabelEncoder   #import library
+import joblib
 encoder=LabelEncoder()                       #create object
 data['workclass']=encoder.fit_transform(data['workclass']) #7 categories   0,1, 2, 3, 4, 5, 6,
 data['marital_status']=encoder.fit_transform(data['marital_status'])   #3 categories 0, 1, 2
@@ -92,7 +93,7 @@ data['education'] = encoder.fit_transform(data['education'])
 data['native_country']=encoder.fit_transform(data['native_country'])
 
 data
-
+joblib.dump(encoders, "encoders.pkl")
 x=data.drop(columns=['income'])
 y=data['income']
 x
@@ -171,6 +172,8 @@ import joblib
 
  # Load the trained model
 model = joblib.load("best_model.pkl")
+encoders = joblib.load("encoders.pkl")
+
  
 #st.set_page_config(page_title="EMPLOYEE SALARY PREDICTION", page_icon="💼", layout="centered")
  
@@ -182,32 +185,14 @@ st.sidebar.header("👨‍💻 EMPLOYEE DETAILS")
  
 # ✨ Replace these fields with your dataset's actual input columns
 age = st.sidebar.slider("Age", 18, 65, 30)
-workclass = st.sidebar.selectbox("Work", [
-     "Self-emp-not-inc", "Local-gov", "State-gov",
-     "Federal-gov", "Self-emp-inc"
-])
-education = st.sidebar.selectbox("Education Level", [
-    "Bachelors", "Masters", "PhD", "HS-grad", "Assoc", "Some-college"
-])
+workclass = st.selectbox("Workclass", encoders['workclass'].classes_.tolist())
+education = st.selectbox("Education", encoders['education'].classes_.tolist())
 educational_num = st.sidebar.slider("Years of Experience", 1, 16, 10)
-marital_status = st.sidebar.selectbox("Marital Status", [
-    "Married-civ-spouse", "Never-married", "Divorced", "Separated", "Widowed",
-    "Married-spouse-absent"
-])
-occupation = st.sidebar.selectbox("Job Role", [
-    "Tech-support", "Craft-repair", "Other-service", "Sales",
-    "Exec-managerial", "Prof-specialty", "Handlers-cleaners", "Machine-op-inspct",
-    "Adm-clerical", "Farming-fishing", "Transport-moving", "Priv-house-serv",
-    "Protective-serv"
-])
-relationship = st.sidebar.selectbox("Relationship", [
-    "Husband", "Not-in-family", "Wife", "Own-child", "Unmarried","Other-relative"
-])
+marital_status = st.selectbox("Marital Status", encoders['marital_status'].classes_.tolist())
+occupation = st.selectbox("Occupation", encoders['occupation'].classes_.tolist())
+relationship = st.selectbox("Relationship", encoders['relationship'].classes_.tolist())
 hours_per_week = st.sidebar.slider("Hours per week", 1, 80, 40)
-native_country = st.sidebar.selectbox("Native Country",[
-    "United-States", "Cuba", "Jamaica", "India", "Mexico", "Puerto-Rico", "Honduras",
-    "England", "Canada", "Germany", "Iran", "Philippines", "Poland", "Columbia", "Cambodia",
-])
+native_country = st.selectbox("Native Country", encoders['native_country'].classes_.tolist())
  
 # Build input DataFrame (⚠️ must match preprocessing of your training data)
 input_df = pd.DataFrame ({
@@ -221,6 +206,9 @@ input_df = pd.DataFrame ({
     'hours_per_week' : [hours_per_week] ,
     'native_country' : [native_country]
 })
+# Apply label encoding using saved encoders
+for col in encoders:
+    input_df[col] = encoders[col].transform(input_df[col])
  
 st.write("### 🔎 Input Data")
 st.write(input_df)
