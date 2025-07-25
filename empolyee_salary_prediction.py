@@ -102,7 +102,7 @@ encoders = {}
 # Apply Label Encoding
 for col in categorical_cols:
     le = LabelEncoder()
-    df[col] = le.fit_transform(df[col])
+    data[col] = le.fit_transform(data[col])
     encoders[col] = le
 joblib.dump(encoders, "encoders.pkl")
 x=data.drop(columns=['income'])
