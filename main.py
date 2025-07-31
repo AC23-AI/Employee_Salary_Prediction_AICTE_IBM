@@ -14,7 +14,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 import streamlit as st
 
 # -----------------------------------------LOADING DATASET---------------------------------------------------------------------------------
-data=pd.read_csv(r"C:\Users\Dell\Downloads\Telegram Desktop\adult 3_.csv")     # Read adult3_.csv file
+data=pd.read_csv(r"adult 3_.csv")     # Read adult3_.csv file
 data.head(10)                                    # head(n) used to get initial n rows
 data.tail(3)                                     # tail(m) is used to get m rowa from end
 
